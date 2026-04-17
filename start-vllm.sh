@@ -19,10 +19,19 @@ TENSOR_PARALLEL_SIZE="${TENSOR_PARALLEL_SIZE:-1}"
 TRUST_REMOTE_CODE="${TRUST_REMOTE_CODE:-false}"
 EXTRA_ARGS="${EXTRA_ARGS:-}"
 
+if command -v python >/dev/null 2>&1; then
+  PYTHON_BIN="python"
+elif command -v python3 >/dev/null 2>&1; then
+  PYTHON_BIN="python3"
+else
+  echo "ERROR: python executable not found in container"
+  exit 1
+fi
+
 mkdir -p /workspace/.cache/huggingface
 
 CMD=(
-  python -m vllm.entrypoints.openai.api_server
+  "$PYTHON_BIN" -m vllm.entrypoints.openai.api_server
   --host "$HOST"
   --port "$PORT"
   --model "$MODEL_NAME"

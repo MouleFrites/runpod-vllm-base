@@ -10,6 +10,8 @@ Variable obligatoire :
 
 Variables optionnelles :
 
+- Le script detecte automatiquement `python` ou `python3` dans le conteneur
+
 - `HOST` par defaut `0.0.0.0`
 - `PORT` par defaut `8000`
 - `API_KEY` par defaut `token-abc123`
