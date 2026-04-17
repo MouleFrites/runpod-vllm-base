@@ -30,4 +30,4 @@ WORKDIR /workspace
 
 EXPOSE 8000
 
-CMD ["/bin/bash"]
+ENTRYPOINT ["/usr/local/bin/start-vllm.sh"]
